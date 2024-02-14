@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Fully Functional  E-Commerce Application 
+
+#Core packages <br/>
+React Router - Routing <br/>
+Styling - Styled-Components <br/>
+Icons - React Icons <br/>
+Network calls - Axios <br/>
+
+# Screenshots
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
