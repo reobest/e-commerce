@@ -5,7 +5,8 @@ React Router - Routing <br/>
 Styling - Styled-Components <br/>
 Icons - React Icons <br/>
 Network calls - Axios <br/>
-
+hosting - onRender <br/>
+hosting link => https://e-commerce-y4f8.onrender.com
 # Screenshots
 # Home page
 ![home](https://github.com/reobest/e-commerce/assets/88613447/780e0d7d-a8a5-4ab2-b62a-da514d72f7d0)
