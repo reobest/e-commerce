@@ -117,6 +117,10 @@ display: flex;
         font-size: 35px;
 }
   }p{
+    @media only  screen  and (max-width:420px) {
+    font-size: 15px;
+    color:gray;
+ }
     text-align: center;
   }button{
     margin-top: 30px;
@@ -143,15 +147,12 @@ const Imgview = styled.div`
 const Product1vew = styled.div`
 display: flex;
 border-radius: 5px;
+background: #fff;
   box-shadow: 5px 5px 35px rgba(12, 80, 117, 0.467);
 height: 560px;
   width: 100%;
   justify-content: center;
   align-items: center;
-  background:url(${img3});
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-color:#fff;
   @media only  screen  and (max-width:600px) {
     flex-wrap: wrap;
  }

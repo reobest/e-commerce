@@ -59,7 +59,7 @@ display: flex;
     margin:  0 5vw ;
     font-size: 1.7vw;
   }ul{
-    @media only  screen  and (max-width:420px) {
+    @media only  screen  and (max-width:550px) {
     display: none;
   } 
   }
@@ -67,7 +67,7 @@ display: flex;
 `
 const MobileNav = styled.button`
     display: none;
-    @media only  screen  and (max-width:420px) {
+    @media only  screen  and (max-width:550px) {
     font-size: 20px;
   color: #fff;
   background-color: transparent;
@@ -77,7 +77,7 @@ const MobileNav = styled.button`
 `
 const Mobilenavbar = styled.div`
     display: none;
-    @media only  screen  and (max-width:420px) {
+    @media only  screen  and (max-width:550px) {
       transition: all .5s ease-in-out;
   position: absolute;
   width: ${props => props.hide ? '100%' : '0px'};
@@ -93,7 +93,7 @@ const Mobilenavbar = styled.div`
     }
     ul{
       display: none;
-      @media only  screen  and (max-width:420px) {
+      @media only  screen  and (max-width:550px) {
         position: absolute;
   transition: all 1.2s ease-in-out;
   display: flex;

@@ -4,12 +4,12 @@ import Other from '../components/Other'
 import MainSection from '../components/MainSection'
 import styled from 'styled-components'
 const Home = () => {
-  const [hide,setHide] = useState(true)
+  const [hide, setHide] = useState(true)
   return (
     <Application>
-    <Header/>
-     {hide && <Other/>}  
-    <MainSection/>
+      <Header />
+      {hide && <Other />}
+      <MainSection />
     </Application>
   )
 }

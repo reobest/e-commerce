@@ -9,22 +9,18 @@ import { useGlobalContext } from '../Context'
 export const secondContext = createContext()
 const ProductDetail = () => {
   const context = useGlobalContext()
-  const {addToCart,count} = context 
-    const {id,id2} = useParams()
-    const prodDetails = rayan.pagesList.find((pro)  => pro.id === id)
-    const reo = prodDetails?.content?.find((item) => {
-       if(item.id === parseInt(id2)) {
-         return item
-       }
-    })
+  const { addToCart, count } = context
+  const { id, id2 } = useParams()
+  const productDetails = rayan.pagesList.find(pro => pro.id === id);
+  const selectedItem = productDetails?.content?.find(item => item.id === parseInt(id2));
   return (
     <div>
-        <secondContext.Provider value={{reo,addToCart,count}}>
-          <Product/>
-          <Features/>
-          <Pics/>
-          <Other/>
-        </secondContext.Provider>
+      <secondContext.Provider value={{ selectedItem, addToCart, count }}>
+        <Product />
+        <Features />
+        <Pics />
+        <Other />
+      </secondContext.Provider>
     </div>
   )
 }

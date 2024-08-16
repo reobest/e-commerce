@@ -4,29 +4,37 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import styled from 'styled-components'
 const DropDown = () => {
-  const context = useGlobalContext()
-  const { clearall, cartCount, newCartProduct, result } = context
+  const { clearall, cartCount, newCartProduct, result, setShowCart, showcart } = useGlobalContext();
+
+  const handleClick = () => {
+    setShowCart(false);
+  };
+
+  if (!showcart) return null;
+
   return (
     <Container>
-      <Cartupper>
+      <CartUpper>
         <h3>Cart ({cartCount})</h3>
-        <button onClick={clearall}>remove all</button>
-      </Cartupper>
-      <Cartmiddle>
-        {newCartProduct}
-      </Cartmiddle>
-      <Cartfooter>
+        <button onClick={clearall}>Remove All</button>
+      </CartUpper>
+      <CartMiddle>{newCartProduct}</CartMiddle>
+      <CartFooter>
         <div>
-          <span>ToTal:</span>
+          <span>Total:</span>
           <span>{result}</span>
         </div>
-        <Link to="/checkout"><button className="custom-btn btn-3"><span>Check Out</span></button></Link>
-      </Cartfooter>
+        <Link to="/checkout">
+          <button className="custom-btn btn-3" onClick={handleClick}>
+            <span>Check Out</span>
+          </button>
+        </Link>
+      </CartFooter>
     </Container>
-  )
-}
+  );
+};
 
-export default DropDown
+export default DropDown;
 const Container = styled.div`
   right: 50px;
   top: 50px;
@@ -49,7 +57,7 @@ const Container = styled.div`
   transform: translateX(-50%);
  }
 `
-const Cartupper = styled.div`
+const CartUpper = styled.div`
   height: 20%;
   width: 100%;
   display: flex;
@@ -63,7 +71,7 @@ const Cartupper = styled.div`
     cursor: pointer;
   }
 `
-const Cartmiddle = styled.div`
+const CartMiddle = styled.div`
 display: flex;
    width: 100%;
   height: 60%;
@@ -74,7 +82,7 @@ display: flex;
   display: none;
 }
 `
-const Cartfooter = styled.div`
+const CartFooter = styled.div`
   height: 20%;
   width: 100%;
   padding:  0 20px;

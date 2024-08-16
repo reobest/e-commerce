@@ -25,19 +25,19 @@ const Container = styled.div`
   border-radius: 5px;
   display: flex;
   box-shadow: 5px 5px 35px rgba(12, 80, 117, 0.467);
-  @media only  screen  and (max-width:420px) {
+  @media only  screen  and (max-width:550px) {
     height: auto;
   padding: 20px;
   flex-direction: column-reverse;
   } 
 header{
   h2{
-    @media only  screen  and (max-width:420px) {
+    @media only  screen  and (max-width:550px) {
       font-weight: 400;
   margin-top: 20px;
   }
   }
-  @media only  screen  and (max-width:420px) {
+  @media only  screen  and (max-width:550px) {
     margin: 0;
     margin-bottom: 20px;
   width: 100%;
@@ -50,7 +50,7 @@ header{
   flex-direction: column;
   justify-content: center;
   p{
-    @media only  screen  and (max-width:420px) {
+    @media only  screen  and (max-width:550px) {
       font-size: 15px;
   }
     margin-top: 30px;
@@ -62,7 +62,7 @@ header{
     height: 100%;
   width: 54%;
   position: relative;
-  @media only  screen  and (max-width:420px) {
+  @media only  screen  and (max-width:550px) {
       height: 290px;
      width: 100%;
   }

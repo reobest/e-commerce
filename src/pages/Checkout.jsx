@@ -2,110 +2,127 @@ import React from 'react'
 import { useGlobalContext } from '../Context'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-const Checkout = () => {  
+const Checkout = () => {
   const context = useGlobalContext()
-  const {newCartProduct,result,clearall,values,handleBlur,handleChange,handleSubmit,errors,shipping,vatIncluded,addCart} = context 
-  const Navigate = useNavigate() 
+  const { newCartProduct, result, clearall, values, handleBlur, handleChange, handleSubmit, errors, shipping, vatIncluded, addCart } = context
+  const Navigate = useNavigate()
+  const fields = [
+    values.firstName,
+    values.emailNumber,
+    values.email,
+    values.street,
+    values.code,
+    values.city,
+    values.country,
+    values.number,
+    values.eMoney
+  ];
   const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
   };
   const isObjectEmpty = isEmptyObject(errors);
-   const handleClick = () => {
-    if(isObjectEmpty){
+  const handleClick = () => {
+    if (isObjectEmpty) {
       alert("Please finish Filling Your Form")
     }
-    if(addCart.length == 0){
+    if (addCart.length == 0) {
       alert("Your Cart is empty !,Buy Something")
       Navigate('/')
     }
-    else{
+
+    const allFieldsFilled = fields.every(field => field.trim() !== '');
+    if (!allFieldsFilled) {
+      alert("Please finish filling out the form");
+      return;
+    }
+    else {
       alert("You Have Successfully bought The Product")
       Navigate('/')
       clearall()
     }
-   }
+  }
   return (
     <Container>
-        <Formcheckout>
+      <Formcheckout>
         <h1>CHECKOUT</h1>
-      <form onSubmit={handleSubmit}>
-        <Billingdetails>
+        <form onSubmit={handleSubmit}>
+          <Billingdetails>
             <p>Billing Details</p>
             <div>
-            <Div1>
-           {  !errors.firstName && <label htmlFor='firstName'>Name</label>}
-           {errors.firstName && <p className='error'>{errors.firstName}</p>}
-            <input  type='text' className={errors.firstName ? "error-border b-r" : "b-r"}  name='firstName' placeholder='Alexei Ward' value={values.firstName} onBlur={handleBlur} onChange={handleChange} />
-            {  !errors.emailNumber && <label htmlFor='emailNumber'>Email Number</label>}
-            {errors.emailNumber && <p className='error'>{errors.emailNumber}</p>}
-            <input type='text' className={errors.emailNumber ? "error-border" : ""} name='emailNumber' placeholder='+1 202-555-0136' value={values.emailNumber} onBlur={handleBlur} onChange={handleChange}></input>
-            </Div1>
-            <Div2>
-            {  !errors.email && <label htmlFor='email'>Email</label>}
-            {errors.email && <p className='error'>{errors.email}</p>}
-            <input type='email' className={errors.email? "error-border" : ""}  name='email' placeholder='alexei@mail.com' value={values.email} onBlur={handleBlur} onChange={handleChange}/>
-            </Div2>
+              <Div1>
+                {!errors.firstName && <label htmlFor='firstName'>Name</label>}
+                {errors.firstName && <p className='error'>{errors.firstName}</p>}
+                <input type='text' className={errors.firstName ? "error-border b-r" : "b-r"} name='firstName' placeholder='Alexei Ward' value={values.firstName} onBlur={handleBlur} onChange={handleChange} />
+                {!errors.emailNumber && <label htmlFor='emailNumber'>Email Number</label>}
+                {errors.emailNumber && <p className='error'>{errors.emailNumber}</p>}
+                <input type='text' className={errors.emailNumber ? "error-border" : ""} name='emailNumber' placeholder='+1 202-555-0136' value={values.emailNumber} onBlur={handleBlur} onChange={handleChange}></input>
+              </Div1>
+              <Div2>
+                {!errors.email && <label htmlFor='email'>Email</label>}
+                {errors.email && <p className='error'>{errors.email}</p>}
+                <input type='email' className={errors.email ? "error-border" : ""} name='email' placeholder='alexei@mail.com' value={values.email} onBlur={handleBlur} onChange={handleChange} />
+              </Div2>
             </div>
-        </Billingdetails>
-        <Shippinginfo>
+          </Billingdetails>
+          <Shippinginfo>
             <div>
-            {  !errors.street && <label htmlFor='street'>Street</label>}
-            {errors.street && <p className='error'>{errors.street}</p>}
-            <input className={errors.street ? "error-border" : ""} name='street' placeholder='1137 Williams Avenue' value={values.street} onBlur={handleBlur} onChange={handleChange}/>
+              {!errors.street && <label htmlFor='street'>Street</label>}
+              {errors.street && <p className='error'>{errors.street}</p>}
+              <input className={errors.street ? "error-border" : ""} name='street' placeholder='1137 Williams Avenue' value={values.street} onBlur={handleBlur} onChange={handleChange} />
             </div>
             <div>
-                <div>
-                {  !errors.code && <label htmlFor='code'>Code</label>}
+              <div>
+                {!errors.code && <label htmlFor='code'>Code</label>}
                 {errors.code && <p className='error'>{errors.code}</p>}
-                <input className={errors.code? "error-border" : ""} name='code' placeholder='10001' value={values.code} onBlur={handleBlur} onChange={handleChange}/>
-                </div>
-                <div className='div-4 column'>
-                {  !errors.city && <label htmlFor='city'>City</label>}
+                <input className={errors.code ? "error-border" : ""} name='code' placeholder='10001' value={values.code} onBlur={handleBlur} onChange={handleChange} />
+              </div>
+              <div className='div-4 column'>
+                {!errors.city && <label htmlFor='city'>City</label>}
                 {errors.city && <p className='error'>{errors.city}</p>}
-                <input className={errors.city ? "error-border" : ""} name='city' placeholder='New York' value={values.city} onBlur={handleBlur} onChange={handleChange}/>
-                </div>
+                <input className={errors.city ? "error-border" : ""} name='city' placeholder='New York' value={values.city} onBlur={handleBlur} onChange={handleChange} />
+              </div>
             </div>
             <div>
-            {  !errors.country && <label htmlFor='country'>Country</label>}
-            {errors.country && <p className='error'>{errors.country}</p>}
-            <input className={errors.country? "error-border" : ""} name='country' placeholder='United States' value={values.country} onBlur={handleBlur} onChange={handleChange}/>
+              {!errors.country && <label htmlFor='country'>Country</label>}
+              {errors.country && <p className='error'>{errors.country}</p>}
+              <input className={errors.country ? "error-border" : ""} name='country' placeholder='United States' value={values.country} onBlur={handleBlur} onChange={handleChange} />
             </div>
-        </Shippinginfo>
-        <PaymentDetails>
+          </Shippinginfo>
+          <PaymentDetails>
             <Div6>
-                <Div7>
+              <Div7>
                 <label>e-Money</label>
                 <input type='radio' name='radio' checked></input>
-                </Div7>
-                <Div8>
+              </Div7>
+              <Div8>
                 <label>Cash on Delivery</label>
-                <input type='radio' name='radio'></input> 
-                </Div8>
+                <input type='radio' name='radio'></input>
+              </Div8>
             </Div6>
-        <Div9>
-        {  !errors.number && <label htmlFor='number'>Zip Code</label>}
-        {errors.number && <p className='error'>{errors.number}</p>}
-            <input className={errors.number ? "error-border" : ""} name='number' placeholder='238521993' value={values.number} onBlur={handleBlur} onChange={handleChange}/>
-            {  !errors.eMoney && <label htmlFor='eMoney'>e-Money</label>}
-            {errors.eMoney && <p className='error' style={{margin:"10px 0 "}}>{errors.eMoney}</p>}
-            <input className={errors.eMoney? "error-border b-r" : "b-r"} name='eMoney' placeholder='6891' value={values.eMoney} onBlur={handleBlur} onChange={handleChange}/>
-        </Div9>
-        </PaymentDetails>
+            <Div9>
+              {!errors.number && <label htmlFor='number'>Zip Code</label>}
+              {errors.number && <p className='error'>{errors.number}</p>}
+              <input className={errors.number ? "error-border" : ""} name='number' placeholder='238521993' value={values.number} onBlur={handleBlur} onChange={handleChange} />
+              {!errors.eMoney && <label htmlFor='eMoney'>e-Money</label>}
+              {errors.eMoney && <p className='error' style={{ margin: "10px 0 " }}>{errors.eMoney}</p>}
+              <input className={errors.eMoney ? "error-border b-r" : "b-r"} name='eMoney' placeholder='6891' value={values.eMoney} onBlur={handleBlur} onChange={handleChange} />
+            </Div9>
+          </PaymentDetails>
         </form>
-    </Formcheckout>
-    <Checkoutcart>
+      </Formcheckout>
+      <Checkoutcart>
         <h1>Summary</h1>
-      <Cartmiddle>
-        {newCartProduct}  
-      </Cartmiddle>
-      <Checkoutcarttotal>
-       <p><span>Total</span><span>{result}</span></p>
-       <p><span>SHIPPING</span><span>{shipping}</span></p>
-       <p><span>VAT (INCLUDED)</span><span>{vatIncluded}</span></p>
-       <p><span>GRAND TOTAL</span><span>{result + shipping + vatIncluded}</span></p>
-      </Checkoutcarttotal>
-      <button className="custom-btn btn-3" onClick={handleClick}><span>Continue and pay</span></button>
-    </Checkoutcart>
+        <Cartmiddle>
+          {newCartProduct}
+        </Cartmiddle>
+        <Checkoutcarttotal>
+          <p><span>Total</span><span>{result}</span></p>
+          <p><span>SHIPPING</span><span>{shipping}</span></p>
+          <p><span>VAT (INCLUDED)</span><span>{vatIncluded}</span></p>
+          <p><span>GRAND TOTAL</span><span>{result + shipping + vatIncluded}</span></p>
+        </Checkoutcarttotal>
+        <button className="custom-btn btn-3" onClick={handleClick}><span>Continue and pay</span></button>
+      </Checkoutcart>
     </Container>
   )
 }

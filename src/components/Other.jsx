@@ -33,6 +33,7 @@ const Container = styled.div`
   justify-content: space-between;
   background-color: #fff;
   display: flex;
+  gap:30px;
   border-radius: 5px;
   color: #fff;
   box-shadow: 5px 5px 35px rgba(12, 80, 117, 0.467);

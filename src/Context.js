@@ -103,7 +103,7 @@ const AppProvider = ({ children }) => {
      },[addCart]) 
   return (
     <AppContext.Provider value={{handleCart,addToCart,count,newCartProduct,result,handleCount,clearall,showcart,hide,setHide,newPagesList,mobilePagesList,handleMobile,
-      values,handleBlur,handleChange,handleSubmit,errors,shipping,vatIncluded,handleScroll,addCart}}>
+      values,handleBlur,handleChange,handleSubmit,errors,shipping,vatIncluded,handleScroll,addCart,setShowCart}}>
       {children}
     </AppContext.Provider>
   )
